@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library'; 
+import { render, fireEvent } from 'react-testing-library'; 
 import 'jest-dom/extend-expect'
 
 import App from './App';
@@ -17,6 +17,15 @@ describe('<App />', () => {
     const text = getByText(/hello world/i)
 
     expect(text).toBeInTheDocument()
+  })
+
+  it('greets the team', () => {
+    const { getByText } = render(<App />)
+
+    const greetButton = getByText(/greet/i)
+    fireEvent.click(greetButton)
+
+    expect(getByText(/hello team lee/i)).toBeInTheDocument()
   })
 })
 
