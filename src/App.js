@@ -4,7 +4,12 @@ import './App.css';
 
 class App extends Component {
   state = {
-    greeting: ''
+    greeting: '',
+    players: [
+      { id: 1, name: 'Nate'}, 
+      { id: 2, name: 'Lee' },
+      { id: 3, name: 'Rebby'}
+    ]
   }
 
   render() {
@@ -15,7 +20,7 @@ class App extends Component {
           <button onClick={this.greet}>Greet</button>
           <div>{this.state.greeting}</div>
         </div>
-        <Players />
+        <Players players={this.state.players} />
       </div>
     );
   }
